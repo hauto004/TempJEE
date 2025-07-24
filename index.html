@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stay Focused!</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        color: #333;
+    }
+    .container {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        max-width: 500px;
+        width: 90%;
+    }
+    h1 {
+        color: #ff5722;
+        font-size: 2.8em;
+        margin-bottom: 15px;
+    }
+    #countdown {
+        font-size: 1.8em;
+        margin: 20px 0;
+        color: #444;
+    }
+    .quote {
+        font-style: italic;
+        font-size: 1.4em;
+        margin: 25px 0;
+        color: #555;
+    }
+    button {
+        padding: 15px 35px;
+        font-size: 1.2em;
+        background: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    button:hover {
+        background: #1976d2;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Focus Mode</h1>
+    <p id="countdown"></p>
+    <p class="quote" id="quote"></p>
+    <button onclick="window.location.href='https://your-study-site.com'">Back to Study</button>
+</div>
+
+<script>
+    const now = new Date();
+    const targetDate = new Date();
+    targetDate.setDate(now.getDate() + 7);
+
+    function updateCountdown() {
+        const currentTime = new Date().getTime();
+        const diff = targetDate - currentTime;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerText = `Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (diff <= 0) {
+            document.getElementById("countdown").innerText = "Target Complete!";
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    const quotes = [
+        "Discipline is doing what needs to be done, even when you don’t feel like it.",
+        "Arjuna didn’t quit in Kurukshetra. Why should you?",
+        "Focus on the process, not the distraction.",
+        "One day, all your hard work will pay off.",
+        "Dream big, work hard, stay focused.",
+        "Don’t wish for it. Work for it.",
+        "Time is limited. Use it wisely.",
+        "Your IIT version is watching you right now.",
+        "Stop scrolling. Start winning.",
+        "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन — Gita",
+        "Push yourself, because no one else is going to do it for you.",
+        "Great things never come from comfort zones.",
+        "Success doesn’t just find you. You have to go out and get it.",
+        "The harder you work for something, the greater you’ll feel when you achieve it.",
+        "Dream it. Wish it. Do it.",
+        "Sometimes later becomes never. Do it now.",
+        "Little things make big days.",
+        "Don’t stop when you’re tired. Stop when you’re done.",
+        "Wake up with determination. Go to bed with satisfaction.",
+        "Do something today that your future self will thank you for.",
+        "Small progress is still progress.",
+        "Success doesn’t come from what you do occasionally, but what you do consistently.",
+        "Push harder than yesterday if you want a different tomorrow.",
+        "Keep going. Everything you need will come to you at the perfect time.",
+        "Doubt kills more dreams than failure ever will.",
+        "Work while they sleep. Learn while they party.",
+        "Your future is created by what you do today, not tomorrow.",
+        "Action is the foundational key to all success.",
+        "The way to get started is to quit talking and begin doing.",
+        "Don’t let what you cannot do interfere with what you can do.",
+        "Well done is better than well said.",
+        "Do what you can with all you have, wherever you are.",
+        "The best way to get ahead is to get started.",
+        "Fall seven times and stand up eight.",
+        "Success is walking from failure to failure with no loss of enthusiasm.",
+        "It always seems impossible until it’s done.",
+        "Hard work beats talent when talent doesn’t work hard.",
+        "A river cuts through rock not because of its power, but its persistence.",
+        "You don’t have to be great to start, but you have to start to be great.",
+        "The expert in anything was once a beginner.",
+        "The secret of getting ahead is getting started.",
+        "Opportunities don’t happen, you create them.",
+        "Don’t count the days, make the days count.",
+        "Nothing worth having comes easy.",
+        "Start where you are. Use what you have. Do what you can.",
+        "If you get tired, learn to rest, not to quit.",
+        "Focus on your goal. Don’t look in any direction but ahead.",
+        "Your only limit is you.",
+        "Consistency is what transforms average into excellence."
+    ];
+
+    document.getElementById("quote").innerText = quotes[Math.floor(Math.random() * quotes.length)];
+</script>
+
+</body>
+</html>
