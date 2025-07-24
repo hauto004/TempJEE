@@ -64,13 +64,27 @@
 </div>
 
 <script>
-    const now = new Date();
-    const targetDate = new Date();
-    targetDate.setDate(now.getDate() + 7);
+    // Check if target date exists in localStorage
+    let targetDate = localStorage.getItem('targetDate');
+
+    if (!targetDate) {
+        const now = new Date();
+        const newTarget = new Date();
+        newTarget.setDate(now.getDate() + 7);
+        targetDate = newTarget.getTime();
+        localStorage.setItem('targetDate', targetDate);
+    } else {
+        targetDate = parseInt(targetDate);
+    }
 
     function updateCountdown() {
         const currentTime = new Date().getTime();
         const diff = targetDate - currentTime;
+
+        if (diff <= 0) {
+            document.getElementById("countdown").innerText = "Target Complete!";
+            return;
+        }
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -78,10 +92,6 @@
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         document.getElementById("countdown").innerText = `Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-        if (diff <= 0) {
-            document.getElementById("countdown").innerText = "Target Complete!";
-        }
     }
 
     setInterval(updateCountdown, 1000);
